@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 作用空间-->
+<mapper   namespace="bao8_spring_mybatis.get">
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <select id="getbook" resultType="bao8_spring_mybatis.book">
+        select id,name,price from book where id=#{id}
+    </select>
+    <select id="getperson" resultType="bao8_spring_mybatis.person">
+        select name,money from person where name=#{name}
+    </select>
+    <select id="getbookbyname" resultType="bao8_spring_mybatis.book">
+        select * from book where name like #{name}
+    </select>
+    <select id="getpersonbyname" resultType="bao8_spring_mybatis.person">
+        select * from person where name like #{name}
+    </select>
+    <select id="getmap" resultType="bao8_spring_mybatis.book">
+        select * from ${table} where id=#{id}
+    </select>
+    <select id="getidname" resultType="bao8_spring_mybatis.book">
+        select * from book where id=#{id} and name=#{name}
+    </select>
+    <!--useGeneratedKeys 自增主键   keyProperty 主键赋值-->
+    <insert id="addbook" useGeneratedKeys="true" keyProperty="id">
+        insert into book(name,price) values (#{name},#{price})
+    </insert>
+    <update id="update">
+        update book set name=#{name},price=#{price} where id=#{id}
+    </update>
+    <delete id="delete">
+        delete from book where id=#{id}
+    </delete>
+</mapper>

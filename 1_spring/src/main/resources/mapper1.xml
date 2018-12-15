@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bao8_spring_mybatis.getbook">
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <select id="getnames" resultType="bao8_spring_mybatis.bumen">
+        select * from bumen where name=#{name}
+    </select>
+
+    <resultMap id="map" type="bao8_spring_mybatis.book">
+        <!--设置主键列  column数据库列 property实现类属性-->
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="price" property="price"/>
+    </resultMap>
+    <select id="getid" resultMap="map">
+        select * from book where id=#{id};
+    </select>
+
+    <resultMap id="maps" type="bao8_spring_mybatis.person">
+        <id column="name" property="name"/>
+        <result column="money" property="money"/>
+        <!--<result column="bm" property="bumen.bm"/>-->
+        <!--<result column="name" property="bumen.name"/>-->
+        <!--两种方法  property指定联合对象  javaType指定java对象类型-->
+        <association property="bumen" javaType="bao8_spring_mybatis.bumen" >
+            <id column="name1" property="name"/>
+            <result column="bm1" property="bm"/>
+        </association>
+    </resultMap>
+    <select id="getname" resultMap="maps">
+        select person.name,person.money,bumen.name name1,bumen.bm bm1 from person,bumen where person.name=bumen.name and bumen.name=#{name}
+    </select>
+
+    <resultMap id="map1" type="bao8_spring_mybatis.person">
+        <id column="name" property="name"/>
+        <result column="money" property="money"/>
+   <!--column 将第一步查出的结果传参进去，查询第二步-->
+        <association property="bumen"
+                     select="bao8_spring_mybatis.getbook.getnames" column="name">
+        </association>
+    </resultMap>
+    <select id="getstep" resultMap="map1">
+       select * from person where name=#{name}
+       <!--<if book="_parameter!=null">-->
+           <!--and 1=1-->
+       <!--</if>-->
+    </select>
+
+    <select id="getlist" resultType="bao8_spring_mybatis.person">
+        select person.name,person.money from person,bumen where person.name=bumen.name and bumen.bm=#{bm};
+    </select>
+
+   <resultMap id="map2" type="bao8_spring_mybatis.person">
+       <id column="name" property="name"/>
+       <!--<result column="money" property="money"/>-->
+       <discriminator javaType="String" column="name">
+           <case value="aa" resultType="bao8_spring_mybatis.bumen">
+               <association property="bumen"
+                            select="bao8_spring_mybatis.getbook.getnames" column="name">
+               </association>
+           </case>
+       </discriminator>
+   </resultMap>
+    <select id="getif" resultMap="map2">
+        select * from person where name=#{name}
+    </select>
+
+             <!--prefix="":前缀：trim标签体中是整个字符串拼串 后的结果。-->
+             <!--prefix给拼串后的整个字符串加一个前缀-->
+             <!--prefixOverrides="":-->
+             <!--前缀覆盖： 去掉整个字符串前面多余的字符-->
+             <!--suffix="":后缀-->
+             <!--suffix给拼串后的整个字符串加一个后缀-->
+             <!--suffixOverrides=""-->
+             <!--后缀覆盖：去掉整个字符串后面多余的字符-->
+    <select id="getwhere" resultType="bao8_spring_mybatis.book">
+        select * from book
+        <where>
+         <trim suffixOverrides="and">
+            <if test="id!=null">
+                id=#{id} and
+            </if>
+            <if test="name!=null">
+                name like #{name} and
+            </if>
+            <if test="price!=null">
+                price=#{price}
+            </if>
+         </trim>
+
+
+            <!-- 如果带了id就用id查，如果带了lastName就用lastName查;只会进入其中一个 -->
+            <!--<choose>-->
+                <!--<when book="id!=null">-->
+                    <!--id=#{id}-->
+                <!--</when>-->
+                <!--<when book="name!=null">-->
+                    <!--name like #{name}-->
+                <!--</when>-->
+                <!--<when book="price!=null">-->
+                    <!--price=#{price}-->
+                <!--</when>-->
+                <!--<otherwise></otherwise>-->
+            <!--</choose>-->
+        </where>
+    </select>
+</mapper>
