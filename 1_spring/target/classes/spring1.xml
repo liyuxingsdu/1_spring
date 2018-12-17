@@ -6,20 +6,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-  <bean id="person0" class="bao1.person" >
+  <bean id="person0" class="bao1_spring_getbean.person" >
       <property name="name" value="qaz"/>
       <property name="age" value="12"/>
   </bean>
 
-   <bean id="person" class="bao1.person">
+   <bean id="person" class="bao1_spring_getbean.person">
        <!--constructor-arg通过构造器注入   index优先级-->
        <constructor-arg value="10" index="1"/>
        <constructor-arg value="xyz" index="0" />
    </bean>
 
-   <bean id="person1" class="bao1.person" p:age="16" p:name="qaz"/>
+   <bean id="person1" class="bao1_spring_getbean.person" p:age="16" p:name="qaz"/>
 
-    <bean id="car" class="bao1.car">
+    <bean id="car" class="bao1_spring_getbean.car">
         <property name="name" value="benchi"/>
         <property name="people">
             <list>
@@ -32,7 +32,7 @@
     <bean id="person2" parent="person0" p:age="18"/>
     <!--context:property-placeholder  引入外部文件-->
     <context:property-placeholder location="db.properties"/>
-        <bean id="person3" class="bao1.person">
+        <bean id="person3" class="bao1_spring_getbean.person">
             <property name="name" value="${name}"/>
             <property name="age" value="${age}"/>
         </bean>

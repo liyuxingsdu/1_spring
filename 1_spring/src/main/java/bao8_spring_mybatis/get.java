@@ -13,7 +13,7 @@ public interface get {
     @MapKey("name")
     public Map<String,Object> getbookbyname(String name);
     public List<person> getpersonbyname(String name);
-    public book getmap(Map<String,Object> map);
+    public book getmap(Map<String, Object> map);
     //定义参数别名
     public book getidname(@Param("id") int id, @Param("name") String name);
     public void addbook(book b);

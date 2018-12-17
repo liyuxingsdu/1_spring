@@ -1,4 +1,4 @@
-package bao2;
+package bao2_spring_getbean;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -15,10 +15,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class main {
     public static void main(String[] args) {
         ApplicationContext ctx=new ClassPathXmlApplicationContext("spring2.xml");
-        bao2.person p=(bao2.person)ctx.getBean("person");
+        person p=(person)ctx.getBean("person");
         System.out.println(p);
         p.test();
-        bao2.car c= (bao2.car) ctx.getBean("car");
+        car c= (car) ctx.getBean("car");
         System.out.println(c);
         c.test();
     }

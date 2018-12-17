@@ -1,4 +1,4 @@
-package bao2;
+package bao2_spring_getbean;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

@@ -32,11 +32,11 @@ public class Junit {
    }
 
    @Test
-    public  void test1() throws IOException {
+   public  void test1() throws IOException {
        SqlSessionFactory sqlSessionFactory=getsqlsessionfactory();
        SqlSession sqlSession=sqlSessionFactory.openSession();
        try {
-           book b=sqlSession.selectOne("get.getbook",1000);
+           book b=sqlSession.selectOne("bao8_spring_mybatis.get.getbook",1000);
            System.out.println(b);
        }finally {
            sqlSession.close();

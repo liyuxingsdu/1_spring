@@ -1,4 +1,4 @@
-package bao2;
+package bao2_spring_getbean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class person {
     @Autowired
-    private bao2.car c;
+    private car c;
 
     public void test()
     {

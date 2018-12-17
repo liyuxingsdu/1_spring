@@ -1,4 +1,4 @@
-package bao1;
+package bao1_spring_getbean;
 
 /**
  * @Title person

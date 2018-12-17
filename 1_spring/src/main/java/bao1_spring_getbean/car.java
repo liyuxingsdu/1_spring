@@ -1,4 +1,4 @@
-package bao1;
+package bao1_spring_getbean;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import java.util.List;
  * @Create 2018\9\3 0003 11:24
  */
 public class car {
-    private List<bao1.person> people;
+    private List<person> people;
     private String name;
 
-    public void setPeople(List<bao1.person> people) {
+    public void setPeople(List<person> people) {
         this.people = people;
     }
 

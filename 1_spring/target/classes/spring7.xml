@@ -27,13 +27,13 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="book" class="bao7.bookImpl">
+    <bean id="book" class="bao7_spring_buybooks.bookImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-    <bean id="buy" class="bao7.buyImpl">
+    <bean id="buy" class="bao7_spring_buybooks.buyImpl">
         <property name="b" ref="book"/>
     </bean>
-    <bean id="buy2" class="bao7.buy2Impl">
+    <bean id="buy2" class="bao7_spring_buybooks.buy2Impl">
         <property name="b" ref="buy"/>
     </bean>
 
