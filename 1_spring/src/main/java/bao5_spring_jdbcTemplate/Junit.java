@@ -43,7 +43,7 @@ public class Junit{
     public void test3()
     {
         String sql="insert into person(name,money,flag) values(?,?,?)";
-        List<Object[]> list =new ArrayList<>();
+        List<Object[]> list =new ArrayList<Object[]>();
         Object[] a=new Object[]{"ee",50,"1"};
         list.add(a);
         list.add(new Object[]{"dd",40,"1"});

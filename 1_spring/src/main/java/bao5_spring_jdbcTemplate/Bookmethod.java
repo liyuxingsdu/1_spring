@@ -22,7 +22,7 @@ public class Bookmethod {
     public book get(int id)
     {
         String sql="select id,name,price from book where id=?";
-        RowMapper<book> rowmap = new BeanPropertyRowMapper<>(book.class);
+        RowMapper<book> rowmap = new BeanPropertyRowMapper<book>(book.class);
         book t=jdbcTemplate.queryForObject(sql,rowmap,id);
         return t;
     }

@@ -80,7 +80,7 @@ public class Junit {
                 System.out.println(p);
                 System.out.println();
             }
-            Map<String, Object> map1 = new HashMap<>();
+            Map<String, Object> map1 = new HashMap<String, Object>();
             map1.put("table","book");
             map1.put("id",1000);
             book b = g.getmap(map1);
