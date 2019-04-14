@@ -8,7 +8,7 @@
     <bean id="log1" class="bao4_spring_aop.log1"></bean>
     <aop:config>
         <!--切面-->
-        <aop:pointcut expression="execution(* bao4.*.*(..))" id="point"/>
+        <aop:pointcut expression="execution(* bao4_spring_aop.*.*(..))" id="point"/>
         <aop:aspect ref="log1">
             <!--切点-->
             <aop:before method="before" pointcut-ref="point"/>

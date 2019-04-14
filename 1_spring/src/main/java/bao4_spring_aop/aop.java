@@ -15,25 +15,25 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(0)//优先级
 public class aop implements aopinterface{
-    @Override
+//    @Override
     public int add(int i, int j) {
         System.out.println("result:"+(i+j));
         return i+j;
     }
 
-    @Override
+//    @Override
     public int sub(int i, int j) {
         System.out.println("result:"+(i-j));
         return i-j;
     }
 
-    @Override
+//    @Override
     public int mul(int i, int j) {
         System.out.println("result:"+(i*j));
         return i*j;
     }
 
-    @Override
+//    @Override
     public int div(int i, int j) {
         System.out.println("result:"+(i/j));
         return i/j;

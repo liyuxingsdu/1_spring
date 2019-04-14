@@ -20,6 +20,6 @@ public class main1 {
         a.add(1,2);
         a.sub(5,2);
         a.mul(3,2);
-        a.div(8,1);
+        a.div(8,2);
     }
 }

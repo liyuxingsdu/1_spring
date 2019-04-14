@@ -22,7 +22,7 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class log {
-    @Before("execution(* bao4.*.*(..))")
+    @Before("execution(* bao4_spring_aop.*.*(..))")
     public void before(JoinPoint JoinPoint)
     {
         System.out.println();
